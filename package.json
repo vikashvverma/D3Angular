@@ -1,0 +1,22 @@
+{
+  "name": "D3ANgular",
+  "version": "0.0.1",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://www.github.com/vikashvverma/D3Angular"
+  },
+  "keywords": [
+    "D3",
+    "Angular"
+  ],
+  "author": "Vikash",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.12.4"
+  }
+}
