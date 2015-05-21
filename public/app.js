@@ -1,15 +1,19 @@
 // create module for custom directives
-var d3DemoApp = angular.module('d3DemoApp', []);
+var d3DemoApp = angular.module('d3DemoApp', ['ngMaterial']);
 
 // controller business logic
-d3DemoApp.controller('AppCtrl', function AppCtrl($scope) {
+d3DemoApp.controller('AppCtrl', ['$scope', '$mdSidenav', function($scope, $mdSidenav) {
+
+  $scope.toggleSidenav = function(menuId) {
+    $mdSidenav(menuId).toggle();
+  };
   $scope.chartData = {
       "name": "Server",
       "type": "Server",
       "icon": "platform.jpg",
       children:[{
         icon: "eco123.jpg",
-        name: "devic1",
+        name: "device1",
         type: "Device",
         children:[{
           icon:'groovyAgent.png',
@@ -60,7 +64,7 @@ d3DemoApp.controller('AppCtrl', function AppCtrl($scope) {
         type: "Device"
       }]
     };
-});
+}]);
 d3DemoApp.directive('forceCollapisble', function($document,$window) {
 
       function fCollapsible(scope, element, attrs) {
@@ -70,13 +74,21 @@ d3DemoApp.directive('forceCollapisble', function($document,$window) {
             // width of the window so we know when
             // boostrap divs will trigger resizing
             scope.getWindowWidth = function () {
-                return w.width();
+                return w[0].innerWidth;
+            }
+            scope.getWindowHeight = function () {
+                return w[0].innerHeight;
             }
             scope.$watch(scope.getWindowWidth, function (newWidth, oldWidth) {
                     if (newWidth != oldWidth) {
                       scope.render();
                     }
                 });
+                scope.$watch(scope.getWindowHeight, function (newHeight, oldHeight) {
+                        if (newHeight != oldHeight) {
+                          scope.render();
+                        }
+                    });
 
         // Capture the window event so we can capture
             // the bootstrap media query boundaries
