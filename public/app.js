@@ -251,7 +251,7 @@ d3DemoApp.controller('AppCtrl', function AppCtrl($scope) {
       "deviceIP": "44.43.25.30"
   }];
 });
-d3DemoApp.directive('forceCollapisble', function() {
+d3DemoApp.directive('forceCollapisble', function($document) {
 
       function fCollapsible(scope, element, attrs) {
         this.param = ['ecosystem', 'agency', 'agent'];
@@ -259,8 +259,8 @@ d3DemoApp.directive('forceCollapisble', function() {
           var params = this.param;
           $(this.parentId).html("");
           // $(this.parentId).append(this.template);
-          var width = '1000'; // set width to container width
-          var height = '700'; // set height to container height
+          var width = $(element).parent().width(); // set width to container width
+          var height = $(element).parent().height(); // set height to container height
           //  Use this.parentId for refernce to DOM element to create visualization.
           //  Use this.model.attributes.properties.get('count').attributes.propertyValue
           //  to link to property in "PROP.js" file
